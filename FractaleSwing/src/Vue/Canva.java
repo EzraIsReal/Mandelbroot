@@ -18,19 +18,21 @@ public class Canva extends JPanel{
      public Graphics2D g;
      int width;
      int height;
+     
+     Modele m = new Modele(-2.1, 1, -1, 1.2);
     
-    public Canva (int width, int height){       
+    public Canva (int width, int height, Modele m){       
         super();
         this.width = width;
         this.height = height;
-        Modele.img = dessiner(Modele.MANDELBROT_RE_MIN,Modele.MANDELBROT_RE_MAX,Modele.MANDELBROT_IM_MIN,Modele.MANDELBROT_IM_MIN, width, height);
+        Modele.img = dessiner(m.getMANDELBROT_RE_MIN(), m.getMANDELBROT_RE_MAX(), m.getMANDELBROT_IM_MIN(), m.getMANDELBROT_IM_MAX(), width, height);
     }
     
     public void paintComponent (Graphics g)
     {
         super.paintComponent(g);
         g.drawImage(Modele.img, 0, 0, null);
-        Modele.img = dessiner(Modele.MANDELBROT_RE_MIN,Modele.MANDELBROT_RE_MAX,Modele.MANDELBROT_IM_MIN,Modele.MANDELBROT_IM_MIN, width, height);
+        Modele.img = dessiner(m.getMANDELBROT_RE_MIN(), m.getMANDELBROT_RE_MAX(), m.getMANDELBROT_IM_MIN(), m.getMANDELBROT_IM_MAX(), width, height);
     }
     
     public BufferedImage dessiner(double reMin, double reMax, double imMin, double imMax, int width, int height) {
@@ -78,4 +80,22 @@ public class Canva extends JPanel{
         }
         return convergenceSteps;
     }
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+    
+    
 }
