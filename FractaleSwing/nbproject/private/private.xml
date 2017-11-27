@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+<<<<<<< HEAD
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/Controleur/Controleur.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>36</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/mnt/roon/users/gbchamoulaud/Prog%20Java/FracSwing/FractaleSwing/src/Controleur/Controleur.java</file>
+            <file>file:/mnt/roon/users/gbchamoulaud/Prog%20Java/FracSwing/FractaleSwing/src/Vue/Vue.java</file>
+            <file>file:/mnt/roon/users/gbchamoulaud/Prog%20Java/FracSwing/FractaleSwing/src/Main/MonMain.java</file>
+            <file>file:/mnt/roon/users/gbchamoulaud/Prog%20Java/FracSwing/FractaleSwing/src/Vue/Canva.java</file>
+            <file>file:/mnt/roon/users/gbchamoulaud/Prog%20Java/FracSwing/FractaleSwing/src/Modele/Modele.java</file>
+        </group>
+    </open-files>
+=======
 	<editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"
 		lastBookmarkId="0" />
 	<open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
@@ -10,4 +31,5 @@
 			<file>file:/mnt/roon/users/gbchamoulaud/Prog%20Java/FracSwing/FractaleSwing/src/Modele/Modele.java</file>
 		</group>
 	</open-files>
+>>>>>>> 0bc75b8274b0c76a6522f5de6fe2dc3a1e0f6f3d
 </project-private>

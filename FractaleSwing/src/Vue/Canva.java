@@ -15,24 +15,30 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 public class Canva extends JPanel{        
-     public Graphics2D g;
-     int width;
-     int height;
+    public Graphics2D g;
+    int width;
+    int height;
      
-     Modele m = new Modele(-2.1, 1, -1, 1.2);
+    Modele m = new Modele(-2.1, 1, -1, 1.2);
     
-    public Canva (int width, int height, Modele m){       
+    public Canva (Modele m){       
         super();
-        this.width = width;
-        this.height = height;
-        Modele.img = dessiner(m.getMANDELBROT_RE_MIN(), m.getMANDELBROT_RE_MAX(), m.getMANDELBROT_IM_MIN(), m.getMANDELBROT_IM_MAX(), width, height);
+        this.width = m.getCANVAS_WIDTH();
+        this.height = m.getCANVAS_HEIGHT();
+        Modele.img = dessiner(m.getMANDELBROT_RE_MIN(), m.getMANDELBROT_RE_MAX(), m.getMANDELBROT_IM_MIN(), m.getMANDELBROT_IM_MAX(), m.getCANVAS_WIDTH(), m.getCANVAS_HEIGHT());
     }
     
     public void paintComponent (Graphics g)
     {
         super.paintComponent(g);
         g.drawImage(Modele.img, 0, 0, null);
-        Modele.img = dessiner(m.getMANDELBROT_RE_MIN(), m.getMANDELBROT_RE_MAX(), m.getMANDELBROT_IM_MIN(), m.getMANDELBROT_IM_MAX(), width, height);
+        Modele.img = dessiner(m.getMANDELBROT_RE_MIN(), m.getMANDELBROT_RE_MAX(), m.getMANDELBROT_IM_MIN(), m.getMANDELBROT_IM_MAX(), m.getCANVAS_WIDTH(), m.getCANVAS_HEIGHT());
+    }
+    
+    public void zoom (Canva c)
+    {
+        c.paintComponent(g);
+        c.repaint();
     }
     
     public BufferedImage dessiner(double reMin, double reMax, double imMin, double imMax, int width, int height) {
@@ -95,7 +101,5 @@ public class Canva extends JPanel{
 
 	public void setHeight(int height) {
 		this.height = height;
-	}
-    
-    
+	}        
 }

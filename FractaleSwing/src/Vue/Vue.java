@@ -37,22 +37,19 @@ public class Vue extends JFrame implements Observer {
     JLabel label_IM_MAX;
     Canva c;
 	
-	private Modele modele = new Modele(-2,1,-1.2,1.2);
-	private Controleur controleur = new Controleur(modele,c);
-    
-    private int WIDTH = 1080;
-    private int HEIGHT = 720;   
-    
+    private Modele modele = new Modele(-2, 1, -1.2, 1.2);
+    private Controleur controleur = new Controleur(modele, c);
+        
     public Vue (String titre, Modele modele, Controleur controleur)
     {
         super(titre);
         
         this.modele = modele;
-		this.controleur = controleur;
-		modele.addObserver(this);
+	this.controleur = controleur;
+	modele.addObserver(this);
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
-        setBounds(200,150,WIDTH,HEIGHT);
+        setBounds(200, 150, modele.getSCREEN_WIDTH(), modele.getSCREEN_HEIGHT());
         
         JPanel panel1 = new JPanel();
         
@@ -62,18 +59,24 @@ public class Vue extends JFrame implements Observer {
         label_RE_MAX = new JLabel("RE_MAX");
         label_IM_MIN = new JLabel("IM_MIN");
         label_IM_MAX = new JLabel("IM_MAX");
-        c = new Canva(700, 600, modele);        
+        c = new Canva(modele);        
         
         zoom_Plus.setBackground(Color.green);
         bouton2.setBackground(Color.MAGENTA);   
         
+        label_RE_MIN.setPreferredSize(new Dimension(150, 20));
         label_RE_MIN.setBorder(BorderFactory.createLineBorder(Color.black));
+        label_RE_MAX.setPreferredSize(new Dimension(150, 20));
         label_RE_MAX.setBorder(BorderFactory.createLineBorder(Color.black));
+        label_IM_MIN.setPreferredSize(new Dimension(150, 20));
         label_IM_MIN.setBorder(BorderFactory.createLineBorder(Color.black));
+        label_IM_MAX.setPreferredSize(new Dimension(150, 20));
         label_IM_MAX.setBorder(BorderFactory.createLineBorder(Color.black));
     
         add(panel1,BorderLayout.WEST);
-        panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));        
+        panel1.setPreferredSize(new Dimension(150, modele.getSCREEN_HEIGHT()));
+        panel1.setBackground(Color.GRAY);
+
         panel1.add(zoom_Plus);
         panel1.add(bouton2);
         panel1.add(label_RE_MIN);
@@ -83,12 +86,12 @@ public class Vue extends JFrame implements Observer {
         
         zoom_Plus.addActionListener((ActionEvent e) ->
 		{System.out.println("Vue - ZOOM"); 
-		controleur.zoom();});        
+		controleur.zoom(c);});        
         
-        label_RE_MIN.setText( String.valueOf(modele.getMANDELBROT_RE_MIN() ) );
-        label_RE_MAX.setText( String.valueOf(modele.getMANDELBROT_RE_MAX() ) );
-        label_IM_MIN.setText( String.valueOf(modele.getMANDELBROT_IM_MIN() ) );
-        label_IM_MAX.setText( String.valueOf(modele.getMANDELBROT_IM_MAX() ) );        
+        label_RE_MIN.setText( "RE MIN | " + String.valueOf(modele.getMANDELBROT_RE_MIN() ) );
+        label_RE_MAX.setText( "RE MAX | " + String.valueOf(modele.getMANDELBROT_RE_MAX() ) );
+        label_IM_MIN.setText( "IM MIN | " + String.valueOf(modele.getMANDELBROT_IM_MIN() ) );
+        label_IM_MAX.setText( "IM MAX | " + String.valueOf(modele.getMANDELBROT_IM_MAX() ) );        
         
         add(c);        
        
@@ -98,9 +101,9 @@ public class Vue extends JFrame implements Observer {
     @Override
     public void update(Observable o, Object arg) {
     	System.out.println("Vue - Notification Recue");
-    	label_RE_MIN.setText( String.valueOf(modele.getMANDELBROT_RE_MIN() ) );
-        label_RE_MAX.setText( String.valueOf(modele.getMANDELBROT_RE_MAX() ) );
-        label_IM_MIN.setText( String.valueOf(modele.getMANDELBROT_IM_MIN() ) );
-        label_IM_MAX.setText( String.valueOf(modele.getMANDELBROT_IM_MAX() ) );  
+    	label_RE_MIN.setText( "RE MIN | " + String.valueOf(modele.getMANDELBROT_RE_MIN() ) );
+        label_RE_MAX.setText( "RE MAX | " + String.valueOf(modele.getMANDELBROT_RE_MAX() ) );
+        label_IM_MIN.setText( "IM MIN | " + String.valueOf(modele.getMANDELBROT_IM_MIN() ) );
+        label_IM_MAX.setText( "IM MAX | " + String.valueOf(modele.getMANDELBROT_IM_MAX() ) );   
     }   
 }

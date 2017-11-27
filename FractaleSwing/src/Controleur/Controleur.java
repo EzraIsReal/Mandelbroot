@@ -7,8 +7,8 @@ import Vue.*;
 public class Controleur {
 
 	private Modele m = new Modele(-2,1,-1.2,1.2);
-	private Canva canva = new Canva(700, 600, m);
-	public Graphics2D g;
+	private Canva canva = new Canva(m);
+	//public Graphics2D g;
 	
 	public Controleur(Modele modele, Canva c)
 	{
@@ -35,14 +35,11 @@ public class Controleur {
 	}
 	
 	//ZOOM
-	public void zoom () {
+	public void zoom (Canva c) {
+
 		m.setMANDELBROT_RE_MIN( m.getMANDELBROT_RE_MIN()-100 );
 		m.setMANDELBROT_RE_MAX( m.getMANDELBROT_RE_MAX()-100 );
 		m.setMANDELBROT_IM_MIN( m.getMANDELBROT_IM_MIN()-100 );
 		m.setMANDELBROT_IM_MAX( m.getMANDELBROT_IM_MAX()-100 );
-		
-		canva.dessiner(m.getMANDELBROT_RE_MIN(), m.getMANDELBROT_RE_MAX(), m.getMANDELBROT_IM_MIN(), m.getMANDELBROT_IM_MAX(), canva.getWidth(), canva.getHeight());
-		canva.paintComponent(g);
-
 	}
 }
